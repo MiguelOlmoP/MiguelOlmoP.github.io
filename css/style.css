@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'libreBaskerville';
-    src: url('LibreBaskerville/LibreBaskerville-Regular.ttf');
+    src: url('font/LibreBaskerville/LibreBaskerville-Regular.ttf');
 }
 
 @font-face {
     font-family: 'libreBaskerville-bold';
-    src: url('LibreBaskerville/LibreBaskerville-Bold.ttf');
+    src: url('font/LibreBaskerville/LibreBaskerville-Bold.ttf');
 }
 
 @font-face {
     font-family: 'libreBaskerville-italic';
-    src: url('LibreBaskerville/LibreBaskerville-Italic.ttf');
+    src: url('font/LibreBaskerville/LibreBaskerville-Italic.ttf');
 }
 
 @font-face {
     font-family: 'dmSanz';
-    src: url('DM_Sans/DMSans-VariableFont_opsz\,wght.ttf');
+    src: url('font/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf');
 }
 
 /*Reset CSS */
