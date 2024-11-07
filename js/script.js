@@ -89,11 +89,17 @@ function works() {
 
 
 function verModal(event) {
+    
+    let fondoModal = document.createElement("div");
+    fondoModal.classList.add("fondoModal");
+    fondoModal.style.display = "grid";
+    fondoModal.addEventListener("click", cerrarModal);
 
-    let modal = document.getElementsByClassName("modal")[0];
-    modal.style.display = "grid";
-
-
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+    
+    modal.addEventListener("click", (e) => e.stopPropagation());
+    
     let imagenX = document.createElement("img");
     imagenX.setAttribute("alt", "Imagen X");
     imagenX.classList.add("modalX");
@@ -162,13 +168,17 @@ function verModal(event) {
         });
 
         modal.appendChild(div);
+
+        fondoModal.appendChild(modal);
    
+        document.body.appendChild(fondoModal);
 
 }
 
 
 function cerrarModal() {
-    let modal = document.getElementsByClassName("modal")[0];
-    modal.style.display = "none";
-    modal.innerHTML = '';
+    let fondoModal = document.getElementsByClassName("fondoModal")[0];
+    if(fondoModal){
+        fondoModal.remove();
+    }
 }

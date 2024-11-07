@@ -273,39 +273,43 @@ body {
     transform: translateZ(2em) scale(1);
 }
 
-.modal {
-    display: none;
+/* Modal */
+.fondoModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    animation: aparecerModal .7s ease;
+    z-index: 3;
+}
+
+.modal {
     width: 50em;
     max-height: 90vh;
     height: 30em;
-    transform: translate(-50%, -50%);
-    animation: aparecerModal .7s ease;
     overflow-y: auto;
-
-
     color: black;
-
     background: rgb(185, 185, 185);
     border-radius: 1em;
-    z-index: 3;
-
+    z-index: 4;
 }
 
 .modalX {
+    height: 10vh;
     cursor: pointer;
-    width: 6vh;
-    height: 6vh;
-    position: relative;
+    position: absolute;
     justify-content: center;
-
     margin: 1em 1em 0;
 }
 
 .figureModal {
     width: 100%;
+    height: 50vh;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -313,23 +317,29 @@ body {
 }
 
 .imgModal {
-    width: 50vh;
-    height: 50vh;
     position: relative;
+    width: 40vh;
+    height: 40vh;
 }
+
 .descripcion {
     width: 80%;
+    height: 20vh;
     margin: 0 auto;
     text-align: center;
+
 }
 
 .divEnlaces {
     width: 100%;
+    height: 5vh;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-size: 1em;
+    margin-top: 1vh;
 }
 
 .url {
@@ -339,12 +349,10 @@ body {
     border-radius: 2.3em;
     text-transform: uppercase;
     transition: all .2s ease;
-
 }
 
-.url:hover{
+.url:hover {
     border: 1px solid rgb(0, 0, 0);
-
 }
 
 /* Contacto */
@@ -383,7 +391,7 @@ body {
     text-align: center;
     padding: 1em 0 0;
     position: relative;
-    
+
     background-color: rgba(255, 255, 255, 0.2);
     z-index: 2;
 }
@@ -393,31 +401,6 @@ body {
     height: 4em;
 }
 
-@media (max-width:2000px) {
-    .modal {
-        width: 40em;
-        height: 30em;
-    }
-
-    .modalX {
-        width: 6vh;
-        height: 6vh;
-    }
-
-    .imgModal {
-        width: 30vh;
-        height: 30vh;
-    }
-
-    .divEnlaces {
-        font-size: 1em;
-    }
-
-    .url {
-        width: 15em;
-    }
-
-}
 
 @media (max-width:800px) {
     .section .h2 {
@@ -433,9 +416,13 @@ body {
         height: 30em;
     }
 
+    .figureModal {
+        height: 40vh;
+    }
+
     .modalX {
-        width: 5vh;
-        height: 5vh;
+        width: 7vh;
+        height: 7vh;
         margin: .7em .7em 0;
 
     }
@@ -445,9 +432,12 @@ body {
         height: 30vh;
     }
 
-    .descripcion{
+    .descripcion {
         font-size: .9em;
+        height: 15vh;
+
     }
+
     .divEnlaces {
         font-size: .9em;
     }
@@ -491,19 +481,22 @@ body {
     }
 
     .modalX {
-        width: 3vh;
-        height: 3vh;
         margin: .5em .5em 0;
+    }
 
+    .figureModal {
+        height: 25vh;
     }
 
     .imgModal {
-        width: 20vh;
-        height: 20vh;
+        width: 25vh;
+        height: 25vh;
     }
 
+
+
     .divEnlaces {
-        font-size: .7em;
+        font-size: .9em;
     }
 
     .url {
@@ -523,6 +516,14 @@ body {
     .modal {
         width: 30em;
         height: 30em;
+    }
+
+    .descripcion {
+        font-size: .7em;
+    }
+
+    .divEnlaces {
+        height: 10vh;
     }
 }
 
@@ -550,8 +551,6 @@ body {
     }
 
     .modalX {
-        width: 3vh;
-        height: 3vh;
         margin: .4em .4em 0;
 
     }
@@ -562,7 +561,7 @@ body {
     }
 
     .divEnlaces {
-        font-size: .7em;
+        font-size: .9em;
     }
 
     .url {
@@ -583,8 +582,11 @@ body {
         font-size: .6em;
     }
 
-    
+
+
 }
+
+
 
 @media (max-width:406px) {
     .section .h2 {
@@ -610,40 +612,49 @@ body {
         margin: .2em .2em 0;
     }
 
+
+
     .imgModal {
         width: 17vh;
         height: 17vh;
     }
 
     .divEnlaces {
-        font-size: .7em;
+        font-size: .9em;
     }
 
     .url {
         width: 15em;
     }
-   
+
     .footer .img {
         width: 3.2em;
         height: 3.2em;
     }
 }
 
+@media (orientation: landscape){
+    .descripcion {
+        height: 20vh;
+    }
+}
+
 @media (max-height:300px) {
-    
+
     .imgModal {
         width: 22vh;
         height: 22vh;
     }
-.descripcion{
-    font-size: .7em;
-}
-    .divEnlaces {
+
+    .descripcion {
         font-size: .7em;
-        margin: 1em 0;
     }
 
-    
+    .divEnlaces {
+        font-size: .7em;
+    }
+
+
 }
 
 
@@ -675,9 +686,10 @@ body {
 
 @keyframes aparecerModal {
     from {
-        opacity: 0;      
+        opacity: 0;
     }
+
     to {
-        opacity: 1;      
+        opacity: 1;
     }
 }
