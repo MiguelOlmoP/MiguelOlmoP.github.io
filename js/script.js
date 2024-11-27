@@ -100,12 +100,15 @@ function verModal(event) {
     
     modal.addEventListener("click", (e) => e.stopPropagation());
     
+    let divImg = document.createElement("div");
+    divImg.classList.add("divImg");
     let imagenX = document.createElement("img");
     imagenX.setAttribute("alt", "Imagen X");
     imagenX.classList.add("modalX");
     imagenX.setAttribute("src", "img/x.png");
     imagenX.addEventListener("click", cerrarModal);
-    modal.appendChild(imagenX);
+    divImg.appendChild(imagenX);
+    modal.appendChild(divImg);
 
     let figure = document.createElement("figure");
     figure.classList.add("figureModal");
