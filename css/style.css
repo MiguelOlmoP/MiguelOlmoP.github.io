@@ -208,160 +208,89 @@ body {
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 2em 1em white;
     margin: 0 0 3em;
+    padding-bottom: 2vh;
 }
 
-.section .grid {
-    width: 90%;
-    max-width: 40em;
-    margin: 1em 0;
+.workRepo {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 1em;
+    align-items: center;
+    align-items: flex-start;
 }
 
-
-.section .article {
-    width: 100%;
-    min-height: 20vh;
-    background: lightgray;
-    border-radius: 1em;
-
+.repo {
+    max-width: 100vh;
+    max-height: 50vh;
+    background: rgba(185, 185, 185, 0.7);
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
+    flex-direction: column;
     overflow: hidden;
-}
 
-.section .figure {
-    width: 100%;
-}
-
-.section .img {
-    width: 100%;
-}
-
-.section .h4 {
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(1rem);
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-    font-size: 1.9em;
-    font-family: "libreBaskerville-italic";
-    opacity: 0;
-    transform: translateZ(1.2emem) scale(1.2);
-    transition: all .5s ease;
-}
-
-.section .article:hover .h4 {
-    opacity: 1;
-    transform: translateZ(2em) scale(1);
-}
-
-/* Modal */
-.fondoModal {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    animation: aparecerModal .7s ease;
-    z-index: 3;
-}
-
-.modal {
-    max-width: 75vh;
-    max-height: 55vh;
-
-    overflow-y: auto;
-    color: black;
-    background: rgb(185, 185, 185);
     border-radius: 1em;
-    z-index: 4;
+    box-sizing: border-box;
 }
 
-.divImg {
-    width: 100%;
-    height: 5vh;
-
-}
-
-.modalX {
-    height: 5vh;
-    cursor: pointer;
-
-}
-
-.figureModal {
-    width: 100%;
-    height: 27vh;
+.content {
+    padding: 2vh;
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
     align-items: center;
-    overflow: hidden;
 }
 
-.imgModal {
-    max-width: 100%; 
-    max-height: 100%; 
-    object-fit: contain;
-}
-
-.descripcion {
-    width: 90%;
-    height: 15vh;
+.figure {
     margin: auto;
-    text-align: center;
+    max-width: 15vh;
 
 }
 
-.divEnlaces {
+.img {
     width: 100%;
-    height: 6vh;
+    max-height: auto;
+}
 
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+.title {
+    font-size: 3vh;
+    margin: 2vh;
+    font-style: italic;
+}
 
-    align-items: center;
+.divInfo {
+    flex-grow: 1;
+    max-height: 100%;
+    max-width: 40vh;
+}
+
+
+
+.divEn {
+    padding: 2vh;
+    margin: auto;
+    max-width: 100%;
     text-align: center;
-
-
+    width: 100%;
 }
 
 .url {
-    width: 25vh;
     margin: 0 2em;
-    border: 1px solid rgb(148, 147, 147);
+    border: 1px solid rgb(39, 38, 38);
     border-radius: 2.3em;
     text-transform: uppercase;
     transition: all .2s ease;
+    padding: 0.5em 1em;
+    display: inline-block;
 }
 
 .url:hover {
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
 }
+
+
 
 /* Contacto */
 
@@ -420,6 +349,32 @@ body {
 
 }
 
+@media screen and (max-width: 568px) {
+    .repo {
+        flex-direction: column;
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 1.5vh;
+    }
+
+    .figure {
+        max-width: 10vh;
+        margin-bottom: 1em;
+    }
+
+    .url {
+        margin-bottom: 2em;
+    }
+}
+
 @media (max-width:735px) {
     .section .h2 {
         font-size: 4em;
@@ -447,24 +402,6 @@ body {
         margin: 1.5em 1em;
     }
 
-    .modal {
-        max-width: 35em;
-        max-height: 28em;
-    }
-
-
-
-    .figureModal {
-        max-height: 25vh;
-    }
-
-
-
-    .divEnlaces {
-        font-size: .9em;
-    }
-
-
 }
 
 @media (max-width:604px) {
@@ -475,16 +412,6 @@ body {
     .section .h3 {
         font-size: 2.4em;
     }
-
-    .modal {
-        max-width: 30em;
-        max-height: 30em;
-    }
-
-    .descripcion {
-        font-size: .8em;
-    }
-
 
 }
 
@@ -505,27 +432,6 @@ body {
     .section .li {
         font-size: .7em;
     }
-
-    .modal {
-        max-width: 25em;
-        max-height: 25em;
-    }
-
-    .figureModal {
-        max-height: 20vh;
-
-    }
-
-    .imgModal {
-        max-width: 15vh;
-        max-height: 15vh;
-    }
-
-    .divEnlaces {
-        font-size: .9em;
-    }
-
-
 }
 
 @media (max-width:472px) {
@@ -540,9 +446,6 @@ body {
     .section .li {
         font-size: .6em;
     }
-
-
-
 }
 
 
@@ -560,88 +463,53 @@ body {
         font-size: .5em;
     }
 
-    .modal {
-        max-width: 22em;
-        max-height: 25em;
-    }
-
-    .divImg {
-        max-height: 2em;
-    }
-
-    .modalX {
-        max-height: 2em;
-    }
-
-    .descripcion {
-        max-height: 11em;
-    }
-
-
     .footer .img {
-       max-width: 3.2em;
-       max-height: 3.2em;
+        max-width: 3.2em;
+        max-height: 3.2em;
     }
-}
-
-
-@media (max-height:700px) {
-
-    .imgModal {
-        max-width: 20vh;
-        max-height: 20vh;
-    }
-
-    .descripcion {       
-        font-size: .9em;
-    }
-
-    .divEnlaces {
-        font-size: .9em;
-
-    }
-
-    .url{
-        width: 10em;
-    }
-
-}
-
-@media (max-height:600px) {
-
-    .modal{
-        max-width: 32em;
-    }
-
-    .descripcion {       
-        font-size: .8em;
-    }
-
-    .divEnlaces {
-        font-size: .8em;
-
-    }
-
-
 }
 
 @media (max-height:400px) {
 
-    .modal{
-        max-width: 42em;
-    }
-    
-    .descripcion {       
-        font-size: .7em;
+    .workRepo {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .divEnlaces {
-        font-size: .7em;
+    .repo {
+        max-width: 80vh;
+    }
 
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .divInfo {
+        max-width: 70vh;
+    }
+
+
+    .description {
+        font-size: 2.3vh;
+    }
+
+    .figure {
+        max-width: 15vh;
+    }
+
+    .url {
+        padding: 0.2em .5em;
+        font-size: 2vh;
     }
 
 
 }
+
+
+
+
+
 
 @keyframes circulo {
     from {

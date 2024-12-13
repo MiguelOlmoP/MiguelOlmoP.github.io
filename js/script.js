@@ -6,13 +6,12 @@ window.onload = function () {
 }
 
 function works() {
-    let works = document.getElementById("works");
+    let work = document.getElementById("works");
     fetch('https://api.github.com/users/' + usuario + '/repos')
         .then(response => response.json())
         .then(data => {
             data.forEach(repo => {
                 // console.log(repo.name);
-                // console.log("-------------------");
                 // console.log(repo.owner["login"]);
                 // console.log("-------------------");
                 //console.log(repo.description);
@@ -22,14 +21,12 @@ function works() {
                 // console.log(repo);
                 // console.log("-------------------");
                 if (repo.name != usuario) {
-                    datos[repo.name] = {};
 
-                    let article = document.createElement("article");
-                    article.classList.add("article");
-                    article.addEventListener("click", verModal);
-            
+                    let div = document.createElement("div");
+                    div.classList.add("repo");
 
-                    datos[repo.name].url = repo.html_url;
+                    let content = document.createElement("div");
+                    content.classList.add("content");
 
                     let figure = document.createElement("figure");
                     figure.classList.add("figure");
@@ -38,150 +35,96 @@ function works() {
                     img.setAttribute("alt", "Imagen");
                     img.classList.add("img");
                     img.setAttribute("loading", "lazy");
+                    //URL imagen "portada"
                     let imgSrc = new Image();
                     imgSrc.src = "https://raw.githubusercontent.com/" + repo.owner["login"] + "/" + repo.name + "/main/img/portada.png";
 
-
                     if (repo.name == usuario + ".github.io") {
                         img.src = "img/logo.png";
-                        datos[repo.name].img = img.src;
-                        
-
                     } else {
                         //La imagen ha cargado correctamente
                         imgSrc.onload = function () {
                             img.src = imgSrc.src;
-                            datos[repo.name].img = img.src;
-                            
                         };
                         //La imagen no ha cargado correctamente / no existe
                         imgSrc.onerror = function () {
                             img.src = "img/default.png";
-                            datos[repo.name].img = img.src;
-                           
                         };
                     }
 
-                    datos[repo.name].descripcion = repo.description;
-                    //console.log(" -----------------------  URL GitHub  ---------------------------------");
-                    //console.log(datos);
-
-                    let h4 = document.createElement("h4");
-                    h4.classList.add("h4");
-                    let texto = document.createTextNode(repo.name);
-
-                    h4.appendChild(texto);
-
                     figure.appendChild(img);
-                    figure.appendChild(h4);
+                    
 
-                    article.appendChild(figure);
+                    let divInfo = document.createElement("div");
+                    divInfo.classList.add("divInfo");
 
-                    works.appendChild(article);
+                    let h2 = document.createElement("h2");
+                    h2.classList.add("title");
+                    let titulo = document.createTextNode(repo.name);
+
+                    h2.appendChild(titulo);
+
+                    let p = document.createElement("p");
+                    p.classList.add("description");
+                    let texto = document.createTextNode(repo.description);
+
+                    p.appendChild(texto);
+
+                    divInfo.appendChild(h2);
+                    divInfo.appendChild(p);
+
+
+                    let divEn = document.createElement("div");
+                    divEn.classList.add("divEn");
+
+                   
+                    console.log(repo.html_url);
+
+                    let aGitHub = document.createElement("a");
+                    aGitHub.setAttribute("href",repo.html_url);
+                    aGitHub.classList.add("url");
+                    aGitHub.innerHTML = "Visitar GitHub";
+
+                    divEn.appendChild(aGitHub);
+
+                    fetch("json/config.json")
+                        .then(response => response.json())
+                        .then(datosURL => {
+
+                            Object.keys(datosURL).forEach(key => {
+                                if (key == repo.name) {
+                                    // console.log(key); 
+                                    // console.log(datosURL); 
+                                    // console.log(datosURL[key]); 
+
+                                    let a = document.createElement("a");
+                                    a.setAttribute("href", datosURL[key]);
+                                    a.classList.add("url");
+                                    a.innerHTML = "Visitar video";
+                                    divEn.appendChild(a);
+                                }
+                            });
+
+                        })
+                        .catch(error => {
+                            console.error('Error al cargar el JSON:', error);
+                        });
+
+                    content.appendChild(figure);
+                    content.appendChild(divInfo);
+
+                    div.appendChild(content);
+                    div.appendChild(divEn);
+
+                    work.appendChild(div);
 
                 }
 
             });
         })
-        .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:', error));
+
 
 }
 
 
-function verModal(event) {
-    
-    let fondoModal = document.createElement("div");
-    fondoModal.classList.add("fondoModal");
-    fondoModal.style.display = "grid";
-    fondoModal.addEventListener("click", cerrarModal);
-
-    let modal = document.createElement("div");
-    modal.classList.add("modal");
-    
-    modal.addEventListener("click", (e) => e.stopPropagation());
-    
-    let divImg = document.createElement("div");
-    divImg.classList.add("divImg");
-    let imagenX = document.createElement("img");
-    imagenX.setAttribute("alt", "Imagen X");
-    imagenX.classList.add("modalX");
-    imagenX.setAttribute("src", "img/x.png");
-    imagenX.addEventListener("click", cerrarModal);
-    divImg.appendChild(imagenX);
-    modal.appendChild(divImg);
-
-    let figure = document.createElement("figure");
-    figure.classList.add("figureModal");
-
-    let img;
-    let p;
-    let div = document.createElement("div");
-    div.classList.add("divEnlaces");
-    let aGitHub = document.createElement("a");
-    aGitHub.classList.add("url");
-
-    //console.log("******************************* Texto ***********************");
-    //console.log(event.target.textContent);
-    Object.keys(datos).forEach(key => {
-        if (key == event.target.textContent) {
-            aGitHub.setAttribute("href",  datos[key].url);
-            aGitHub.innerHTML = "Visitar GitHub";
-            div.appendChild(aGitHub);
-            img = document.createElement("img");
-            img.classList.add("imgModal");
-            img.setAttribute("src", datos[key].img);
-            figure.appendChild(img);
-            modal.appendChild(figure);
-
-            if (datos[key].descripcion != null) {
-                p = document.createElement("p");
-                p.classList.add("descripcion");
-                let texto = document.createTextNode(datos[key].descripcion);
-
-                p.appendChild(texto);
-                modal.appendChild(p);
-
-            }
-        }
-    });
-
-    fetch("json/config.json")
-        .then(response => response.json())
-        .then(datosURL => {
-            // console.log(" *******************************  Datos JSON  *******************************************"); 
-            // console.log(datosURL); 
-            // console.log(datosURL.prueba1); 
-            Object.keys(datosURL).forEach(key => {
-                if (key == event.target.textContent) {
-                    // console.log(key); 
-                    // console.log(datosURL); 
-                    // console.log(datosURL[key]); 
-
-                    let a = document.createElement("a");
-                    a.setAttribute("href", datosURL[key]);
-                    a.classList.add("url");
-                    a.innerHTML = "Visitar video";
-                    div.appendChild(a);
-                }
-            });
-
-        })
-        .catch(error => {
-            console.error('Error al cargar el JSON:', error);
-        });
-
-        modal.appendChild(div);
-
-        fondoModal.appendChild(modal);
-   
-        document.body.appendChild(fondoModal);
-
-}
-
-
-function cerrarModal() {
-    let fondoModal = document.getElementsByClassName("fondoModal")[0];
-    if(fondoModal){
-        fondoModal.remove();
-    }
-}
