@@ -10,6 +10,9 @@ function works() {
     fetch('https://api.github.com/users/' + usuario + '/repos')
         .then(response => response.json())
         .then(data => {
+            //Ordenar por fecha de creación 
+            data.sort((fecha1, fecha2) => new Date(fecha2.created_at) - new Date(fecha1.created_at));
+
             data.forEach(repo => {
                 // console.log(repo.name);
                 // console.log(repo.owner["login"]);
@@ -53,7 +56,7 @@ function works() {
                     }
 
                     figure.appendChild(img);
-                    
+
 
                     let divInfo = document.createElement("div");
                     divInfo.classList.add("divInfo");
@@ -77,11 +80,8 @@ function works() {
                     let divEn = document.createElement("div");
                     divEn.classList.add("divEn");
 
-                   
-                    console.log(repo.html_url);
-
                     let aGitHub = document.createElement("a");
-                    aGitHub.setAttribute("href",repo.html_url);
+                    aGitHub.setAttribute("href", repo.html_url);
                     aGitHub.classList.add("url");
                     aGitHub.innerHTML = "Visitar GitHub";
 
@@ -122,7 +122,7 @@ function works() {
 
             });
         })
-    .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error:', error));
 
 
 }

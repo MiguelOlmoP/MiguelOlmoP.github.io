@@ -1,7 +1,7 @@
  <h1 align="center">Descripción del Proyecto:</h1>
 
 
-Este portafolio está automatizado para mostrar todos los proyectos de mi cuenta de GitHub de manera dinámica. Cada proyecto va acompañado de una imagen de portada: si el proyecto incluye una imagen llamada "portada", la web la toma automáticamente y la muestra; en caso contrario, se utiliza una imagen predeterminada que he seleccionado. Además, se generan automáticamente enlaces tanto al repositorio de GitHub como a un video explicativo (si está disponible), que ilustra el funcionamiento de los proyectos que he desarrollado personalmente.
+Este portafolio está automatizado para mostrar todos los proyectos de mi cuenta de GitHub de manera dinámica, ordenados por la fecha de creación, de más reciente a más antiguo. Cada proyecto va acompañado de una imagen de portada: si el proyecto incluye una imagen llamada "portada", la web la toma automáticamente y la muestra; en caso contrario, se utiliza una imagen predeterminada que he seleccionado. Además, se generan automáticamente enlaces tanto al repositorio de GitHub como a un video explicativo (si está disponible), que ilustra el funcionamiento de los proyectos que he desarrollado personalmente.
 
 Características clave:
 - **Muestra automáticamente todos los repositorios de GitHub.**
